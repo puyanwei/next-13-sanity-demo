@@ -39,6 +39,6 @@ const project = {
       of: [{ type: "block" }],
     },
   ],
-}
+} as const
 
 export default project

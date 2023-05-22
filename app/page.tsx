@@ -3,7 +3,6 @@ import { Project } from "@/types"
 
 export default async function Home() {
   const projects: Project[] = await getProjects()
-  console.log({ projects })
   return (
     <div>
       {projects.map((project) => (
