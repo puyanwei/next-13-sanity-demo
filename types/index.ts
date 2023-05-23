@@ -7,5 +7,6 @@ export type Project = {
   slug: string
   image: string
   alt: string
+  url: string
   content: PortableTextBlock[]
 }

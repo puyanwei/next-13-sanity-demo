@@ -1,23 +1,15 @@
 import { createClient, groq } from "next-sanity"
 import { Project } from "@/types"
 import { projectQuery } from "./queries/projectQuery"
+import { studioConfig } from "./config/client-config"
 
 export async function getProjects(): Promise<Project[]> {
-  const client = createClient({
-    projectId: "5m4fcoz2",
-    dataset: "production",
-    apiVersion: "2023-05-23",
-  })
-
+  const client = createClient(studioConfig)
   return await client.fetch(projectQuery)
 }
 
 export async function getProject(slug: string): Promise<Project> {
-  const client = createClient({
-    projectId: "5m4fcoz2",
-    dataset: "production",
-    apiVersion: "2023-05-23",
-  })
+  const client = createClient(studioConfig)
 
   return await client.fetch(
     groq`*[_type == "project" && slug.current == $slug][0]{
@@ -33,4 +25,6 @@ export async function getProject(slug: string): Promise<Project> {
       slug,
     }
   )
+
+  // TODO: Find a way of abstracting out the query above
 }

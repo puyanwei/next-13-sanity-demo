@@ -5,22 +5,21 @@ import Link from "next/link"
 
 export default async function Home() {
   const projects: Project[] = await getProjects()
-  console.log(projects)
   return (
-    <div className="max-w-5xl mx-auto py-20 px-16">
-      <h1 className="text-7xl font-extrabold">List of Projects</h1>
+    <div className="max-w-5xl px-16 py-20 mx-auto">
+      <h1 className="font-extrabold text-7xl">List of Projects</h1>
       <h2 className="mt-3 text-xl text-gray-300">These are my projects</h2>
-      <div className="mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid gap-8 mt-5 md:grid-cols-2 lg:grid-cols-3">
         {projects.map(({ _id, name, image, alt, slug }) => (
           <Link
-            className="border-2 border-gray-600 rounded-lg p-1 hover:scale-105 hover:border-blue-500 transition"
+            className="p-1 transition border-2 border-gray-600 rounded-lg hover:scale-105 hover:border-blue-500"
             key={_id}
             href={`/projects/${slug}`}
           >
-            <h3 className="text-semibold text-2xl text-center p-4">{name}</h3>
+            <h3 className="p-4 text-2xl text-center text-semibold">{name}</h3>
             {image && (
               <Image
-                className="object-cover rounded-lg border-border-gray-500"
+                className="object-cover mx-auto rounded-lg border-border-gray-500"
                 src={image}
                 alt={alt}
                 width={250}
