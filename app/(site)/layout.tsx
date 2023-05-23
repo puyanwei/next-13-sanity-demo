@@ -1,5 +1,7 @@
 import Link from "next/link"
 import "../globals.css"
+import { getPages } from "@/sanity/sanity.utils"
+import { Page } from "@/types"
 
 export const metadata = {
   title: "My Awesome Site",
@@ -7,6 +9,7 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const pages: Page[] = await getPages()
   return (
     <html lang="en">
       <body className="max-w-3xl py-10 mx-auto">
@@ -17,13 +20,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           >
             Puyan
           </Link>
-          {/* <div className="flex items-center gap-5 text-sm text-gray-600">
+          <div className="flex items-center gap-5 text-sm text-gray-600">
             {pages.map((page) => (
               <Link key={page._id} href={`/${page.slug}`} className="hover:underline">
                 {page.title}
               </Link>
             ))}
-          </div> */}
+          </div>
         </header>
         <main className="py-20">{children}</main>
       </body>
