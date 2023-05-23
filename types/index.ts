@@ -1,4 +1,4 @@
-import { PortableTextBlock } from "sanity"
+import { Image, PortableTextBlock } from "sanity"
 
 export type Project = {
   _id: string
@@ -6,6 +6,6 @@ export type Project = {
   name: string
   slug: string
   image: string
-  url: string
+  alt: string
   content: PortableTextBlock[]
 }

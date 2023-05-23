@@ -6,6 +6,7 @@ export const projectQuery = groq`*[_type == "project"]{
   name,
   "slug": slug.current,
   "image": image.asset->url,
+  "alt": image.alt,
   url,
   content
 }`
