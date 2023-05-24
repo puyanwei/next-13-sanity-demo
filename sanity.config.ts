@@ -1,13 +1,19 @@
 import { defineConfig } from "sanity"
 import { deskTool } from "sanity/desk"
 import { schemas } from "./sanity/schema"
+import { visionTool } from "@sanity/vision"
+import { projectId, apiVersion, dataset } from "./sanity/sanity.client"
+
+if (!projectId || !dataset) {
+  throw new Error("Missing projectId or dataset")
+}
 
 export const config = defineConfig({
-  projectId: "5m4fcoz2",
-  dataset: "production",
+  projectId,
+  dataset,
   title: "My Personal Website",
-  apiVersion: "2023-05-23",
+  apiVersion,
   basePath: "/admin",
-  plugins: [deskTool()],
+  plugins: [deskTool(), visionTool()],
   schema: { types: schemas },
 })
